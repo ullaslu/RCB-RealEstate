@@ -6,7 +6,7 @@
     <title>RCB Realestate</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top">
     <header class="site-header">
         <div class="logo"><span class="logo-mark">RCB</span> <span class="logo-text">RealEstate</span></div>
         <nav class="nav-links">
@@ -14,7 +14,6 @@
             <a href="#contact">Contact</a>
             <a href="#about">About</a>
         </nav>
-        <a class="login-link" href="#login"><span class="login-icon">🔒</span> Login</a>
     </header>
 
     <section class="top-featured">
@@ -47,28 +46,9 @@
                 <img src="images/hero-house.jpg" alt="Luxury real estate home">
                 <div class="image-overlay">
                     <p class="hero-subtitle">House Images · Estate Images</p>
-                    <p class="typing">Find your dream home today.</p>
+                    <p class="typing">Find Your Dream House Today.</p>
                 </div>
             </div>
-        </div>
-    </section>
-</header>
-
-    <section id="login" class="login-section">
-        <div class="login-panel">
-            <h2>Login to RCB RealEstate</h2>
-            <p>Enter your details to access saved properties and agent support.</p>
-            <form class="login-form">
-                <label class="form-field">
-                    <span>Email</span>
-                    <input class="login-input" type="email" placeholder="you@example.com" required>
-                </label>
-                <label class="form-field">
-                    <span>Password</span>
-                    <input class="login-input" type="password" placeholder="Enter your password" required>
-                </label>
-                <button class="login-submit" type="submit">Login</button>
-            </form>
         </div>
     </section>
 
@@ -154,11 +134,11 @@
                 <h4>RCB RealEstate</h4>
                 <p>Your trusted partner for house and estate listings across India. Find properties with images, locations, and quick contact details.</p>
             </div>
-            <div class="footer-block">
+            <div class="footer-block footer-contact">
                 <h4>Contact</h4>
-                <p>Email: <a href="mailto:rcb@realestate.com">rcb@realestate.com</a></p>
-                <p>Phone: +91 99018 83246</p>
-                <p>Address: OneDrive Campus, Bengaluru</p>
+                <p><span class="footer-icon">📧</span>Email: <a href="mailto:rcb@realestate.com">rcb@realestate.com</a></p>
+                <p><span class="footer-icon">📞</span>Phone: <a href="tel:+919901883246">+91 99018 83246</a></p>
+                <p><span class="footer-icon">📍</span>Address: OneDrive Campus, Bengaluru</p>
             </div>
             <div class="footer-block">
                 <h4>Quick Links</h4>
@@ -166,11 +146,78 @@
                 <a href="#contact">Contact</a>
                 <a href="#about">About</a>
             </div>
+            <div class="footer-block footer-social">
+                <h4>Follow Us</h4>
+                <a href="https://www.instagram.com/rcbrealestate" target="_blank" rel="noreferrer"><span class="footer-icon">📷</span>Instagram</a>
+                <a href="https://www.facebook.com/rcbrealestate" target="_blank" rel="noreferrer"><span class="footer-icon">📘</span>Facebook</a>
+                <a href="https://www.linkedin.com/company/rcbrealestate" target="_blank" rel="noreferrer"><span class="footer-icon">💼</span>LinkedIn</a>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>© 2026 RCB RealEstate. All rights reserved.</p>
             <p>Website: <a href="file:///c:/Users/Ullas%20L%20U/OneDrive/Desktop/ullas/website.html">Open Local Website</a></p>
         </div>
     </footer>
+
+    <!-- Right-side social icons -->
+    <div class="social-icons" aria-hidden="false">
+        <a href="https://www.instagram.com/rcbrealestate" target="_blank" rel="noreferrer" class="instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.4" fill="none"/>
+                <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor"/>
+            </svg>
+            <span class="social-text">Instagram</span>
+        </a>
+        <a href="https://twitter.com/rcbrealestate" target="_blank" rel="noreferrer" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M22 5.92c-.66.29-1.37.48-2.12.57.76-.46 1.34-1.19 1.61-2.06-.71.42-1.5.72-2.34.88A3.7 3.7 0 0 0 12.5 8.5c0 .29.03.57.1.84A10.5 10.5 0 0 1 3.2 5.1a3.7 3.7 0 0 0 1.15 4.95c-.6-.02-1.17-.18-1.66-.45v.05c0 1.8 1.28 3.3 2.98 3.64-.53.14-1.09.17-1.66.06.47 1.45 1.83 2.5 3.45 2.53A7.43 7.43 0 0 1 2 19.54 10.5 10.5 0 0 0 8.29 21c6.76 0 10.46-5.6 10.46-10.46v-.48c.72-.52 1.34-1.17 1.83-1.91-.66.29-1.37.48-2.12.57z"/>
+            </svg>
+            <span class="social-text">Twitter</span>
+        </a>
+        <a href="https://wa.me/919901883246" target="_blank" rel="noreferrer" class="whatsapp" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 .01 5.36.01 12c0 2.11.55 4.08 1.6 5.82L0 24l6.4-1.65A11.93 11.93 0 0 0 12 24c6.63 0 12-5.36 12-12 0-1.9-.45-3.7-1.48-5.32zM17.6 14.1c-.3.84-1.73 1.6-2.38 1.7-.64.13-1.4.19-3.1-.32-2.7-.81-4.45-3.44-4.58-3.6-.13-.16-1.05-1.3-1.05-2.49 0-1.2.84-1.76 1.13-2 .28-.24.63-.32.98-.32.32 0 .62 0 .89.01.29.01.68-.11 1.05.8.36.9 1.16 3.12 1.25 3.34.09.22.14.46.03.74-.11.26-.16.42-.32.66-.16.24-.34.53-.52.77-.18.24-.37.49-.2.77.17.28.76 1.24 1.63 2.02 1.04.89 1.9 1.19 2.12 1.32.22.12.35.11.5-.06.15-.17.66-.78.95-1.07.29-.3.56-.26.94-.17.38.09 2.09 1 2.44 1.18.35.18.6.27.69.42.09.15.09.85-.21 1.69z"/>
+            </svg>
+            <span class="social-text">WhatsApp</span>
+        </a>
+        <a href="https://x.com/rcbrealestate" target="_blank" rel="noreferrer" aria-label="X (Twitter X)">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M3 3l18 18M21 3L3 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="social-text">X</span>
+        </a>
+        <a href="https://www.facebook.com/rcbrealestate" target="_blank" rel="noreferrer" class="facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2v-2.9h2.2V9.2c0-2.2 1.3-3.4 3.3-3.4.95 0 1.9.17 1.9.17v2.1h-1.08c-1.06 0-1.39.66-1.39 1.34v1.6h2.36l-.38 2.9h-1.98v7A10 10 0 0 0 22 12z" fill="currentColor"/>
+            </svg>
+            <span class="social-text">Facebook</span>
+        </a>
+        <a href="https://www.linkedin.com/company/rcbrealestate" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM13 9h3.6v1.6h.1c.5-.9 1.7-1.8 3.4-1.8 3.6 0 4.3 2.3 4.3 5.3V21h-4v-5.1c0-1.2 0-2.7-1.6-2.7-1.6 0-1.9 1.3-1.9 2.6V21h-4z"/>
+            </svg>
+            <span class="social-text">LinkedIn</span>
+        </a>
+        <a href="tel:+919901883246" class="phone" aria-label="Call us">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12.86.36 1.7.72 2.5a2 2 0 0 1-.45 2.11L8.91 9.91a16 16 0 0 0 6 6l1.59-1.59a2 2 0 0 1 2.11-.45c.8.36 1.64.6 2.5.72A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span class="social-text">Call</span>
+        </a>
+        <a href="https://www.youtube.com/@rcbrealestate" target="_blank" rel="noreferrer" class="youtube" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M23.5 6.2a2.8 2.8 0 0 0-1.96-1.98C19.88 4 12 4 12 4s-7.88 0-9.54.22A2.8 2.8 0 0 0 .5 6.2 29.36 29.36 0 0 0 0 12a29.36 29.36 0 0 0 .5 5.8 2.8 2.8 0 0 0 1.96 1.98C4.12 20 12 20 12 20s7.88 0 9.54-.22a2.8 2.8 0 0 0 1.96-1.98A29.36 29.36 0 0 0 24 12a29.36 29.36 0 0 0-.5-5.8z"/>
+                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#fff"/>
+            </svg>
+            <span class="social-text">YouTube</span>
+        </a>
+        <a href="#top" class="login" aria-label="Login">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm-7 18a7 7 0 0 1 14 0H5z"/>
+            </svg>
+            <span class="social-text">Login</span>
+        </a>
+    </div>
 </body>
 </html>

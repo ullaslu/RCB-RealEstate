@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>weather apps</title>
+    <style>
+        :root {
+            --bg: #f0f7ff;
+            --surface: #ffffff;
+            --primary: #1c6dd0;
+            --primary-dark: #1659a5;
+            --text: #1f2d3d;
+            --muted: #5f7a95;
+            --border: rgba(28, 109, 208, 0.15);
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #eef6fb url('images/india-map.svg') center/contain no-repeat fixed;
+            background-size: cover;
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .map-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .map-marker {
+            position: absolute;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            background: radial-gradient(circle at 30% 30%, #ff7676, #cc3344);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.24);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .map-marker:hover,
+        .map-marker:focus {
+            transform: scale(1.1);
+            box-shadow: 0 14px 24px rgba(15, 23, 42, 0.28);
+            outline: none;
+        }
+        body > .app {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            margin: 0 0 1.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+        #cityinput {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid rgba(31, 45, 61, 0.16);
+            border-radius: 12px;
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+        button {
+            width: 100%;
+            padding: 0.95rem 1rem;
+            border: none;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+        .button-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .button-header {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            background: rgba(28, 109, 208, 0.1);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .hint {
+            margin: 0.75rem 0 1rem;
+            font-size: 0.94rem;
+            color: var(--muted);
+            text-align: center;
+        }
+        #weather-result {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            border-radius: 18px;
+            background: #f5f9ff;
+            border: 1px solid var(--border);
+            min-height: 120px;
+            color: var(--muted);
+        }
+        .weather-output {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        .weather-icon {
+            flex: 0 0 92px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.88);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+        }
+        .weather-info {
+            flex: 1 1 180px;
+            min-width: 180px;
+        }
+        .weather-info h2 {
+            margin: 0 0 0.25rem;
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+        .weather-info p {
+            margin: 0.25rem 0;
+            line-height: 1.5;
+        }
+        .weather-info strong {
+            color: var(--text);
+        }
+        .page-header {
+            position: absolute;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 3rem);
+            max-width: 480px;
+            text-align: center;
+            padding: 1rem 1.25rem;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(28, 109, 208, 0.12);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+            z-index: 3;
+            color: var(--text);
+        }
+        .page-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .page-header p {
+            margin: 0.5rem 0 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .map-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            animation: slideInMap 1.2s ease-out both;
+        }
+        .map-marker {
+            position: absolute;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            background: radial-gradient(circle at 30% 30%, #ff7676, #cc3344);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.24);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: markerPulse 3s infinite ease-in-out;
+        }
+        .map-marker:hover,
+        .map-marker:focus {
+            transform: scale(1.2);
+            box-shadow: 0 16px 28px rgba(15, 23, 42, 0.34);
+            outline: none;
+        }
+        .map-marker:nth-child(1) { animation-delay: 0s; }
+        .map-marker:nth-child(2) { animation-delay: 0.2s; }
+        .map-marker:nth-child(3) { animation-delay: 0.4s; }
+        .map-marker:nth-child(4) { animation-delay: 0.6s; }
+        .map-marker:nth-child(5) { animation-delay: 0.8s; }
+        .map-marker:nth-child(6) { animation-delay: 1s; }
+        .map-marker:nth-child(7) { animation-delay: 1.2s; }
+        .map-marker:nth-child(8) { animation-delay: 1.4s; }
+        .map-marker:nth-child(9) { animation-delay: 1.6s; }
+
+        @keyframes fadeInMap {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInMap {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes markerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <h1>Weather App</h1>
+        <p>Touch an India location or type a city name to get today's weather.</p>
+    </header>
+    <div class="app">
+        <h1>weather apps</h1>
+        <input type="text" id="cityinput" placeholder="Enter city name, e.g. London, Mumbai, Tokyo">
+        <div class="button-row">
+            <button type="button" onclick="getweather()">get weather</button>
+            <span class="button-header">Weather lookup</span>
+        </div>
+        <p class="hint">Tap a location on the map to view its weather.</p>
+
+        <div id="weather-result"></div>
+
+        <script src="script.js" defer></script>
+    </div>
+    <div class="map-overlay">
+        <button class="map-marker" type="button" onclick="selectCity('Delhi')" title="Delhi" style="left:21%; top:24%;">D</button>
+        <button class="map-marker" type="button" onclick="selectCity('Mumbai')" title="Mumbai" style="left:30%; top:46%;">M</button>
+        <button class="map-marker" type="button" onclick="selectCity('Kolkata')" title="Kolkata" style="left:44%; top:24%;">K</button>
+        <button class="map-marker" type="button" onclick="selectCity('Chennai')" title="Chennai" style="left:46%; top:60%;">C</button>
+        <button class="map-marker" type="button" onclick="selectCity('Bengaluru')" title="Bengaluru" style="left:32%; top:62%;">B</button>
+    </div>
+</body>
+</html>
